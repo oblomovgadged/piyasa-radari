@@ -6,52 +6,61 @@ from youtube_transcript_api import YouTubeTranscriptApi
 import google.generativeai as genai
 
 def son_canli_yayin_id_bul(kanal_url):
-    streams_url = f"{kanal_url}/streams"
-    with urllib.request.urlopen(streams_url) as response:
-        html = response.read().decode()
-        video_ids = re.findall(r'watch\?v=([^\"&? \n]+)', html)
-        return video_ids[0] if video_ids else None
+    try:
+        streams_url = f"{kanal_url}/streams"
+        with urllib.request.urlopen(streams_url) as response:
+            html = response.read().decode()
+            video_ids = re.findall(r'watch\?v=([^\"&? \n]+)', html)
+            return video_ids[0] if video_ids else None
+    except:
+        return None
 
 def yayini_ozetle():
+    # Şifreyi GitHub kasasından çekiyoruz
     api_key = os.environ.get("GEMINI_API_KEY")
     genai.configure(api_key=api_key)
-    
-    # Senin takip ettiğin kanal
     kanal_linki = "https://www.youtube.com/@Kayitdisi"
     
     try:
-        print("1. Kanaldaki en son canlı yayın aranıyor...")
+        print("1. Video aranıyor...")
         video_id = son_canli_yayin_id_bul(kanal_linki)
-        
         if not video_id:
-            print("Video bulunamadı!")
-            return
+            raise Exception("Kanalda uygun video ID bulunamadı.")
 
-        print(f"Buldum! Video ID: {video_id}")
-        print("2. Konuşma metni çekiliyor...")
+        print(f"Buldum: {video_id}. 2. Metin çekiliyor...")
         
-        altyazilar = YouTubeTranscriptApi.get_transcript(video_id, languages=['tr'])
+        # Önce Türkçe altyazı deniyoruz, olmazsa otomatik çeviriyi deniyoruz
+        try:
+            altyazilar = YouTubeTranscriptApi.get_transcript(video_id, languages=['tr'])
+        except:
+            transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
+            altyazilar = transcript_list.find_transcript(['tr', 'en']).fetch()
+
         tam_metin = " ".join([parca['text'] for parca in altyazilar])
         
         print("3. Yapay Zeka özetliyor...")
         model = genai.GenerativeModel('gemini-1.5-flash')
-        talimat = f"Sen profesyonel bir finans analistisin. Kayıtdışı kanalının şu yayın metnini analiz et. Maddeler halinde; piyasa yönü, ekonomik beklentiler ve önemli seviyeleri özetle: {tam_metin}"
+        # Metin çok uzunsa yapay zeka tıkanmasın diye ilk 30 bin karakteri alıyoruz
+        cevap = model.generate_content(f"Sen profesyonel bir finans analistisin. Şu yayını maddeler halinde özetle: {tam_metin[:30000]}") 
         
-        cevap = model.generate_content(talimat)
-        
-        print("4. Dosya güncelleniyor...")
         ozet_verisi = {
             "analist": "Kayıtdışı - Son Yayın Özeti",
-            "video_url": f"https://www.youtube.com/watch?v={video_id}",
-            "ozet": cevap.text
+            "ozet": cevap.text if cevap.text else "Yapay zeka özet oluşturamadı."
         }
         
-        with open('ozet.json', 'w', encoding='utf-8') as f:
-            json.dump(ozet_verisi, f, ensure_ascii=False, indent=4)
-        print("Bitti! Haritan güncellenmeye hazır.")
+    except Exception as e:
+        print(f"Hata detayı: {e}")
+        # Hata olsa bile sistemi çökertmemek için dosyayı hata mesajıyla oluşturuyoruz
+        ozet_verisi = { 
+            "analist": "Sistem Bildirimi", 
+            "ozet": f"Şu anki yayın için veri çekilemedi. Hata detayı: {str(e)}" 
+        }
 
-    except Exception as hata:
-        print(f"Hata: {hata}")
+    print("4. Dosya kaydediliyor...")
+    # Her durumda ozet.json dosyasını oluştur!
+    with open('ozet.json', 'w', encoding='utf-8') as f:
+        json.dump(ozet_verisi, f, ensure_ascii=False, indent=4)
+    print("İşlem tamamlandı.")
 
 if __name__ == "__main__":
     yayini_ozetle()
