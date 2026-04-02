@@ -8,9 +8,13 @@ import google.generativeai as genai
 def son_canli_yayin_id_bul(kanal_url):
     try:
         streams_url = f"{kanal_url}/streams"
-        with urllib.request.urlopen(streams_url) as response:
+        # YENİLİK: YouTube'un botumuzu engellememesi için tarayıcı maskesi takıyoruz
+        req = urllib.request.Request(streams_url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
+        with urllib.request.urlopen(req) as response:
             html = response.read().decode()
-            video_ids = re.findall(r'watch\?v=([^\"&? \n]+)', html)
+            # YENİLİK: YouTube'un yeni sayfa yapısına uygun daha güçlü arama kodu
+            video_ids = re.findall(r'\"videoId\":\"([a-zA-Z0-9_-]{11})\"', html)
+            # Bulunan ID'lerden sadece ilkini (en son yayını) al
             return video_ids[0] if video_ids else None
     except:
         return None
@@ -28,10 +32,7 @@ def yayini_ozetle():
 
         print(f"Buldum: {video_id}. 2. Metin çekiliyor...")
         
-        # GÜNCELLEME: Hata veren kısmı tamamen kaldırdık. 
-        # API'ye diyoruz ki: Önce Türkçe(tr) ara, bulamazsan İngilizce(en) çek.
         altyazilar = YouTubeTranscriptApi.get_transcript(video_id, languages=['tr', 'en'])
-
         tam_metin = " ".join([parca['text'] for parca in altyazilar])
         
         print("3. Yapay Zeka özetliyor...")
@@ -45,10 +46,9 @@ def yayini_ozetle():
         
     except Exception as e:
         print(f"Hata detayı: {e}")
-        # YouTube videoya henüz altyazı eklememişse kibar bir uyarı ver
         ozet_verisi = { 
             "analist": "Sistem Bildirimi", 
-            "ozet": "Son yayının altyazıları (transcript) YouTube tarafından henüz işlenmemiş. Sistem daha sonra tekrar deneyecektir." 
+            "ozet": "Son yayının altyazıları (transcript) YouTube tarafından henüz işlenmemiş veya videoya erişilemiyor." 
         }
 
     print("4. Dosya kaydediliyor...")
