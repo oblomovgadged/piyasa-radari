@@ -2,19 +2,20 @@ import os
 import json
 import re
 import urllib.request
+import warnings
 from youtube_transcript_api import YouTubeTranscriptApi
 import google.generativeai as genai
+
+# Gemini'nin yeni sürüm uyarısını gizlemek için (sistemi çökertmiyor, kalabalık yapmasın)
+warnings.filterwarnings("ignore")
 
 def son_canli_yayin_id_bul(kanal_url):
     try:
         streams_url = f"{kanal_url}/streams"
-        # YENİLİK: YouTube'un botumuzu engellememesi için tarayıcı maskesi takıyoruz
-        req = urllib.request.Request(streams_url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
+        req = urllib.request.Request(streams_url, headers={'User-Agent': 'Mozilla/5.0'})
         with urllib.request.urlopen(req) as response:
             html = response.read().decode()
-            # YENİLİK: YouTube'un yeni sayfa yapısına uygun daha güçlü arama kodu
             video_ids = re.findall(r'\"videoId\":\"([a-zA-Z0-9_-]{11})\"', html)
-            # Bulunan ID'lerden sadece ilkini (en son yayını) al
             return video_ids[0] if video_ids else None
     except:
         return None
@@ -32,7 +33,10 @@ def yayini_ozetle():
 
         print(f"Buldum: {video_id}. 2. Metin çekiliyor...")
         
-        altyazilar = YouTubeTranscriptApi.get_transcript(video_id, languages=['tr', 'en'])
+        # YENİLİK: YouTube kütüphanesinin yeni "fetch" metodunu kullanıyoruz!
+        ytt_api = YouTubeTranscriptApi()
+        altyazilar = ytt_api.fetch(video_id, languages=['tr', 'en'])
+        
         tam_metin = " ".join([parca['text'] for parca in altyazilar])
         
         print("3. Yapay Zeka özetliyor...")
