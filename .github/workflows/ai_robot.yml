@@ -10,8 +10,7 @@ permissions:
 
 jobs:
   build:
-    # İŞTE SİHİRLİ SATIR: Ubuntu (Linux) yerine macOS kullanıyoruz!
-    runs-on: macos-latest 
+    runs-on: ubuntu-latest 
     steps:
       - uses: actions/checkout@v3
       
@@ -21,7 +20,8 @@ jobs:
           python-version: '3.10'
           
       - name: Kutuphaneleri Yukle
-        run: pip install youtube-transcript-api google-generativeai
+        # YENİLİK: youtube-transcript-api yerine yt-dlp kuruyoruz!
+        run: pip install yt-dlp google-generativeai
         
       - name: Robotu Calistir
         env:
