@@ -1,4 +1,4 @@
 {
     "analist": "Sistem Bildirimi",
-    "ozet": "Şu anki yayın için veri çekilemedi. Hata detayı: type object 'YouTubeTranscriptApi' has no attribute 'list_transcripts'"
+    "ozet": "Son yayının altyazıları (transcript) YouTube tarafından henüz işlenmemiş. Sistem daha sonra tekrar deneyecektir."
 }
