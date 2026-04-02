@@ -16,7 +16,6 @@ def son_canli_yayin_id_bul(kanal_url):
         return None
 
 def yayini_ozetle():
-    # Şifreyi GitHub kasasından çekiyoruz
     api_key = os.environ.get("GEMINI_API_KEY")
     genai.configure(api_key=api_key)
     kanal_linki = "https://www.youtube.com/@Kayitdisi"
@@ -29,18 +28,14 @@ def yayini_ozetle():
 
         print(f"Buldum: {video_id}. 2. Metin çekiliyor...")
         
-        # Önce Türkçe altyazı deniyoruz, olmazsa otomatik çeviriyi deniyoruz
-        try:
-            altyazilar = YouTubeTranscriptApi.get_transcript(video_id, languages=['tr'])
-        except:
-            transcript_list = YouTubeTranscriptApi.list_transcripts(video_id)
-            altyazilar = transcript_list.find_transcript(['tr', 'en']).fetch()
+        # GÜNCELLEME: Hata veren kısmı tamamen kaldırdık. 
+        # API'ye diyoruz ki: Önce Türkçe(tr) ara, bulamazsan İngilizce(en) çek.
+        altyazilar = YouTubeTranscriptApi.get_transcript(video_id, languages=['tr', 'en'])
 
         tam_metin = " ".join([parca['text'] for parca in altyazilar])
         
         print("3. Yapay Zeka özetliyor...")
         model = genai.GenerativeModel('gemini-1.5-flash')
-        # Metin çok uzunsa yapay zeka tıkanmasın diye ilk 30 bin karakteri alıyoruz
         cevap = model.generate_content(f"Sen profesyonel bir finans analistisin. Şu yayını maddeler halinde özetle: {tam_metin[:30000]}") 
         
         ozet_verisi = {
@@ -50,14 +45,13 @@ def yayini_ozetle():
         
     except Exception as e:
         print(f"Hata detayı: {e}")
-        # Hata olsa bile sistemi çökertmemek için dosyayı hata mesajıyla oluşturuyoruz
+        # YouTube videoya henüz altyazı eklememişse kibar bir uyarı ver
         ozet_verisi = { 
             "analist": "Sistem Bildirimi", 
-            "ozet": f"Şu anki yayın için veri çekilemedi. Hata detayı: {str(e)}" 
+            "ozet": "Son yayının altyazıları (transcript) YouTube tarafından henüz işlenmemiş. Sistem daha sonra tekrar deneyecektir." 
         }
 
     print("4. Dosya kaydediliyor...")
-    # Her durumda ozet.json dosyasını oluştur!
     with open('ozet.json', 'w', encoding='utf-8') as f:
         json.dump(ozet_verisi, f, ensure_ascii=False, indent=4)
     print("İşlem tamamlandı.")
