@@ -19,9 +19,9 @@ jobs:
         with:
           python-version: '3.10'
           
+      # YENİLİK: YouTube sorun çıkaran kütüphanelerini sildik! Sadece Yapay Zeka kaldı.
       - name: Kutuphaneleri Yukle
-        # YENİLİK: youtube-transcript-api yerine yt-dlp kuruyoruz!
-        run: pip install yt-dlp google-generativeai
+        run: pip install google-generativeai
         
       - name: Robotu Calistir
         env:
