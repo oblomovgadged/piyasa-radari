@@ -1,4 +1,4 @@
 {
     "analist": "Sistem Bildirimi",
-    "ozet": "Açık kaynak sunucularından metin çekilemedi."
+    "ozet": "Hata: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'"
 }
