@@ -1,10 +1,10 @@
 {
     "youtube": {
         "analist": "Kayıtdışı (YouTube)",
-        "ozet": "YouTube verisi alınamadı. Detay: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'"
+        "ozet": "YouTube verisi alınamadı. Lütfen klasörünüzdeki çakışan 'youtube_transcript_api.py' dosyasını silin. Detay: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'"
     },
     "x_makale": {
         "kaynak": "OKX Türkiye (X)",
-        "ozet": "Verilen bağlantıdaki içeriğe doğrudan erişemediğim veya işleyemediğim için analizi gerçekleştiremiyorum.\n\nGüncel makale bekleniyor..."
+        "ozet": "Harika, başlıyoruz:\n\n*   **26.500$:** Ana direnç. 200-haftalık EMA ve 200-günlük SMA burada kesişiyor. Aşmak, yükseliş için şart.\n*   **26.500$ altı:** İlk durak 25.200$. Asıl kilit destek 24.500$. Buranın kaybı, düşüşü hızlandırır.\n*   **Katalizörler:** Spot ETF haberleri ve makroekonomik veriler (enflasyon, faiz) kırılmayı tetikler. Takip et."
     }
 }
