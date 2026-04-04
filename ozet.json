@@ -1,10 +1,10 @@
 {
     "youtube": {
         "analist": "Kayıtdışı (YouTube)",
-        "ozet": "YouTube verisi alınamadı. (Lütfen CMD'den pip install youtube-transcript-api komutunu çalıştırın). Detay: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'"
+        "ozet": "YouTube verisi alınamadı. Detay: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'"
     },
     "x_makale": {
         "kaynak": "OKX Türkiye (X)",
-        "ozet": "Güncel makale bekleniyor..."
+        "ozet": "Verilen bağlantıdaki içeriğe doğrudan erişemediğim veya işleyemediğim için analizi gerçekleştiremiyorum.\n\nGüncel makale bekleniyor..."
     }
 }
