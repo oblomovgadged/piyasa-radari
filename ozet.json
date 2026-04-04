@@ -1,10 +1,10 @@
 {
     "youtube": {
         "analist": "Kayıtdışı (YouTube)",
-        "ozet": "YouTube verisi alınamadı: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'"
+        "ozet": "YouTube verisi alınamadı. (Lütfen CMD'den pip install youtube-transcript-api komutunu çalıştırın). Detay: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'"
     },
     "x_makale": {
         "kaynak": "OKX Türkiye (X)",
-        "ozet": "Makale metni bulunamadığı için, destek ve direnç noktalarıyla ilgili **genel olarak** en önemli kabul edilen 3 noktayı/aksiyonu özetliyorum:\n\n1.  **Geçmiş Fiyat Hareketleri ve Psikolojik Seviyeler:** Destek ve direnç noktalarını belirlerken, bir varlığın geçmişteki önemli zirve ve dip noktalarına dikkat edin. Ayrıca, yuvarlak sayılar (örneğin, 10.000$, 50.000$) gibi psikolojik seviyeler genellikle güçlü destek veya direnç görevi görebilir. Bunlar, piyasa katılımcılarının ortak algılarını yansıtır.\n\n2.  **Seviye Onayı ve Fiyat Tepkisi Bekleme:** Bir destek veya direnç seviyesine ulaşıldığında hemen işlem yapmaktan kaçının. Fiyatın bu seviyeye nasıl tepki verdiğini (seviyeden sekip geri mi döndüğünü, yoksa güçlü bir şekilde kırıp geçtiğini mi) gözlemleyin. Kırılımların \"retest\" (yani kırılan seviyeyi test edip yoluna devam etmesi) ile onaylanmasını beklemek, sahte sinyallerden korunmak için önemlidir.\n\n3.  **Risk Yönetimi ve Stratejik Kullanım (Stop-Loss/Take-Profit):** Destek ve direnç seviyelerini işlem stratejinizin temel taşlarından biri olarak kullanın. Destek altına stop-loss (zarar durdur), direnç üzerine take-profit (kar al) emirleri belirlemek, potansiyel kayıplarınızı sınırlamanıza ve karlarınızı güvence altına almanıza yardımcı olur. Her zaman bir risk-ödül oranı belirleyerek işlem yapın."
+        "ozet": "Güncel makale bekleniyor..."
     }
 }
