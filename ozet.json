@@ -1,10 +1,10 @@
 {
     "youtube": {
         "analist": "Kayitdisi (YouTube)",
-        "ozet": "YouTube verisi alinamadi. Detay: type object 'YouTubeTranscriptApi' has no attribute 'get_transcript'"
+        "ozet": "YouTube verisi alinamadi. Detay: list indices must be integers or slices, not str"
     },
     "x_makale": {
         "kaynak": "OKX Turkiye (X)",
-        "ozet": "Kral, masadaki son teknik veriyi @efloud'un gözünden ve \"Derin Düşünme Protokolü\" ile nihai olarak yorumluyorum. İşte Bitcoin (BTC) için önümüzdeki günlerin yol haritası:\n1. Mevcut Durum: BTC'nin 60.000 dolar seviyelerinde bir 'range' içerisinde konsolide olduğu görülüyor. Piyasa, mevcut durumda $56,000-$66,000 aralığında bir yatay hareketlilik sergiliyor.\n2. Kritik Direnç ve Tetikleyici (Trigger): Kırmızı Kutu: $64,300 - $66,000. Bu seviyenin üzerinde kapanışlar, yükseliş trendinin devamı için kritik bir tetikleyici olabilir ve boğa onayı için $66,000 üzerinde tutunma gerekli.\n3. Tehlike Senaryosu: \"Son Kale\" Seviyeleri: Yeşil Kutu: $56,000 - $58,000. Bu bölgenin altına düşüşler, aşağı yönlü baskının artmasına neden olabilir ve $56,000'ın altında kalıcılık, ayıların kontrolü ele aldığını gösterir.\n4. Stratejik Not: \"Sapma\" Tuzağı: Daha önceki $69,000 seviyesindeki zirveye yapılan 'deviasyon'dan sonra fiyatın bu bölgeye geri çekilmesi, yukarı yönlü ani hareketlerin bir 'sapma' tuzağı olabileceğine dair net bir işarettir. Kırmızı kutunun üzerinde kalıcılık sağlanmadan yapılacak ataklara dikkat edilmeli.\nÖzet: Net bir yön tayini için $66,000 üzerindeki kalıcılık veya $56,000 altındaki kırılım beklenmeli; aradaki hareketler 'range trading' fırsatları sunabilir."
+        "ozet": "Kral, masadaki son teknik veriyi @efloud'un gözünden ve \"Derin Düşünme Protokolü\" ile nihai olarak yorumluyorum. İşte Bitcoin (BTC) için önümüzdeki günlerin yol haritası:\n1. Mevcut Durum: Haftalık 69.000 bölgesinde yatay bir alandayız, karar aşaması.\n2. Kritik Direnç ve Tetikleyici (Trigger): Kırmızı kutu: 71.300 - 72.800. Bu bölgenin kırılması ve üzerinde günlük kapanış gelmesiyle tetiklenecek boğa hedefi: 78.000 - 80.000.\n3. Tehlike Senaryosu: \"Son Kale\" Seviyeleri: Yeşil kutu: 67.000 - 64.000. Bu bölgenin altında günlük kapanış gelirse düşüş hedefleri: 60.000 ve 58.000.\n4. Stratejik Not: \"Sapma\" Tuzağı: Mevcut bölge, yukarı yönlü bir sapma (deviasyon) sonrası hızlı bir geri çekilme potansiyeli taşıyor; 69.000 üzeri kapanışlar bile bu tuzağı aktive edebilir.\nÖzet: Her iki yöndeki ani hareketlere karşı son derece dikkatli ve hazırlıklı olunmalıdır."
     }
 }
