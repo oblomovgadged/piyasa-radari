@@ -1,10 +1,10 @@
 {
     "youtube": {
-        "analist": "Kayitdisi (YouTube)",
-        "ozet": "YouTube verisi alinamadi. Detay: list indices must be integers or slices, not str"
+        "analist": "Kayıtdışı (YouTube)",
+        "ozet": "YouTube verisi alınamadı. Detay: list indices must be integers or slices, not str"
     },
     "x_makale": {
-        "kaynak": "OKX Turkiye (X)",
-        "ozet": "Kral, masadaki son teknik veriyi @efloud'un gözünden ve \"Derin Düşünme Protokolü\" ile nihai olarak yorumluyorum. İşte Bitcoin (BTC) için önümüzdeki günlerin yol haritası:\n1. Mevcut Durum: Haftalık 69.000 bölgesinde yatay bir alandayız, karar aşaması.\n2. Kritik Direnç ve Tetikleyici (Trigger): Kırmızı kutu: 71.300 - 72.800. Bu bölgenin kırılması ve üzerinde günlük kapanış gelmesiyle tetiklenecek boğa hedefi: 78.000 - 80.000.\n3. Tehlike Senaryosu: \"Son Kale\" Seviyeleri: Yeşil kutu: 67.000 - 64.000. Bu bölgenin altında günlük kapanış gelirse düşüş hedefleri: 60.000 ve 58.000.\n4. Stratejik Not: \"Sapma\" Tuzağı: Mevcut bölge, yukarı yönlü bir sapma (deviasyon) sonrası hızlı bir geri çekilme potansiyeli taşıyor; 69.000 üzeri kapanışlar bile bu tuzağı aktive edebilir.\nÖzet: Her iki yöndeki ani hareketlere karşı son derece dikkatli ve hazırlıklı olunmalıdır."
+        "kaynak": "OKX Türkiye (X)",
+        "ozet": "Kral, masadaki son teknik veriyi @efloud'un gözünden ve \"Derin Düşünme Protokolü\" ile nihai olarak yorumluyorum. İşte Bitcoin (BTC) için önümüzdeki günlerin yol haritası:\n1. Mevcut Durum: BTC, 69.000 - 72.000 dolar aralığında kritik bir konsolidasyon sürecinde.\n2. Kritik Direnç ve Tetikleyici (Trigger): 72.000 dolar, kırılması gereken ilk kritik direnç ve 73.000 - 73.800 dolar bandı bir \"kırmızı kutu\" olarak ATH bölgesi. 72.000 dolar üzerinde günlük kapanış, 75.000 dolar yolunu açacak boğa onayının \"tetikleyicisi\".\n3. Tehlike Senaryosu: \"Son Kale\" Seviyeleri: İlk güçlü destek 67.000 dolar. 65.000 dolar \"yeşil kutu\" bölgesi ve \"Son Kale\" olarak kritik. Bu seviyenin kırılması, 60.000 dolara doğru daha derin bir düzeltmeyi tetikler.\n4. Stratejik Not: \"Sapma\" Tuzağı: 72.000 dolar üzerinde yaşanan kısa süreli yükselişler \"sapma\" tuzağı olarak yorumlanıyor; kalıcı kapanışlar olmadan yükselişlere temkinli yaklaşılmalı.\nÖzet: BTC, 69-72K aralığında konsolide olurken, 72K üzerindeki kalıcı kırılım boğa teyidi; 65K altı ise derin düzeltme riski taşıyor, sapmalara dikkat."
     }
 }
